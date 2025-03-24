@@ -42,7 +42,7 @@ def get_arguments():
     if not inputs.interface:
         print("[-] You need to specify the interface to change MAC address, use --help for more info.   ")
     elif not inputs.new_mac:
-        print("[-] You need to specify the new MAC address, use --help for more info.   ")
+        print("[-] You need to specify the new MAC address, use --help for more info.    ")
     else:
         return inputs
 
