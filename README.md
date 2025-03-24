@@ -10,4 +10,4 @@
 
   `cd /path/to/your/cloned/repository`
 
-  `./mac_changer.py [options]`
+  `./mac_changer.py [options]` 
