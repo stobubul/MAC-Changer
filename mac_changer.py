@@ -32,15 +32,15 @@ def get_arguments():
 
     parse_object = optparse.OptionParser(usage="%prog [options]\n\nThis tool allows you to change the MAC address of a network interface.\n")
 
-    parse_object.add_option("-i", "--interface", dest="interface", help="Specify the network interface (e.g: eth0, wlan0)")
-    parse_object.add_option("-m", "--mac", dest="new_mac", help="Set the new MAC address (format: XX:XX:XX:XX:XX:XX)")
+    parse_object.add_option("-i", "--interface", dest="interface", help="Specify the network interface (e.g: eth0, wlan0)   ")
+    parse_object.add_option("-m", "--mac", dest="new_mac", help="Set the new MAC address (format: XX:XX:XX:XX:XX:XX)    ")
 
     (inputs,arguments) = parse_object.parse_args()
 
     if not inputs.interface:
-        print("[-] You need to specify the interface to change MAC address, use --help for more info.")
+        print("[-] You need to specify the interface to change MAC address, use --help for more info.   ")
     elif not inputs.new_mac:
-        print("[-] You need to specify the new MAC address, use --help for more info.")
+        print("[-] You need to specify the new MAC address, use --help for more info.   ")
     else:
         return inputs
 
@@ -58,7 +58,7 @@ def get_current_mac(interface):
             return None
         return current_mac_address.group(0)
     except subprocess.CalledProcessError:
-        print(f"[-] Interface '{interface}' not found. Please check your interface name and try again.")
+        print(f"[-] Interface '{interface}' not found. Please check your interface name and try again.  ")
         exit(1)
 
 def main():
@@ -81,17 +81,17 @@ def main():
         if current_mac is None:
             exit(1)
 
-        print(f"[~] The Current MAC address is        \t\t{current_mac}   ")
+        print(f"[~] The Current MAC address is        \t\t{current_mac}     ")
         change_mac(inputs.interface, inputs.new_mac)
         current_mac = get_current_mac(inputs.interface)
 
         if current_mac != inputs.new_mac.lower():
             print(f"[-] MAC address did not changed.    ")
         else:
-            print(f"[+] MAC address successfully changed to\t\t{current_mac}  ")
+            print(f"[+] MAC address successfully changed to\t\t{current_mac}    ")
 
     else:
         #New MAC address is invalid
-        print("[-] An invalid MAC address was entered.  ")
+        print("[-] An invalid MAC address was entered. Make sure the MAC address' you have entered format is 'XX:XX:XX:XX:XX:XX'.   ")
 
 main()
